@@ -6,15 +6,14 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   Row,
   Col } from 'reactstrap';
 
-import {signUp} from '../../store/functions/user.js'
+import {login} from '../../store'
 
 
 
-class SignIn extends Component{
+class Login extends Component{
 
   state = {
     name: '',
@@ -30,13 +29,15 @@ class SignIn extends Component{
     })
   }
 
-  handleSubmit = () => {
-    this.props.signUp(this.state)
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.login(this.state)
   }
 
   render(){
     return(
-      <Form onSubmit={() => this.handleSubmit()}>
+      <Form onSubmit={(e) => this.handleSubmit(e)}>
+        <h3>Login</h3>
         <Row form>
           <Col md={6}>
         <FormGroup>
@@ -61,10 +62,10 @@ class SignIn extends Component{
 
 const mapDispatch = (dispatch) => {
   return {
-    signUp: (body) => {
-      return dispatch(signUp(body))
+    login: (body) => {
+      return dispatch(login(body))
     }
   }
 }
 
-export default connect(null, mapDispatch)(SignIn);
+export default connect(null, mapDispatch)(Login);
