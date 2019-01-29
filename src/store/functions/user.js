@@ -1,10 +1,11 @@
-import { URL } from '../../constants/Constants';
-import { logInUser } from '../actions/user'
+import { API, HEADERS } from '../../constants/';
+import { logInUser } from '../'
 
-export function logIn(body){
+export function login(body){
   return (dispatch) => {
-    return fetch(URL + '/users', {
-      method: "GET",
+    return fetch(API + '/login', {
+      method: "POST",
+      headers: HEADERS,
       body: JSON.stringify(body)
     }).then(res => res.json())
     .then(user => {
@@ -15,12 +16,14 @@ export function logIn(body){
 
 export function signUp(body){
   return (dispatch) => {
-    return fetch(URL + '/users', {
+    return fetch(API + '/users', {
       method: "POST",
+      headers: HEADERS,
       body: JSON.stringify(body)
-    }).then(res => res.json())
+    }).then(res => {
+      // debugger
+      return res.json()})
     .then(user => {
-      debugger
       dispatch(logInUser(user))
     })
   }
