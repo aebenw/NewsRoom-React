@@ -1,5 +1,5 @@
 import { API, HEADERS } from '../../constants';
-import {fetchSourcesAction} from '../'
+import { fetchSourcesAction, fetchArticlesAction } from '../'
 
 export function fetchSources(){
   return (dispatch) => {
@@ -8,8 +8,8 @@ export function fetchSources(){
       headers: HEADERS,
     }).then(res => {
       return res.json()})
-    .then(news => {
-      dispatch(fetchSourcesAction(news))
+    .then(sources => {
+      dispatch(fetchSourcesAction(sources))
     })
   }
 }
@@ -20,8 +20,8 @@ export function fetchArtilces(){
       headers: HEADERS,
     }).then(res => {
       return res.json()})
-    .then(news => {
-      dispatch(fetchSourcesAction(news))
+    .then(articles => {
+      dispatch(fetchArticlesAction(articles))
     })
   }
 }

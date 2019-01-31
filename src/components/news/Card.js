@@ -14,19 +14,8 @@ const urlMetadata = require('url-metadata')
 
 
 
-const NewsCard = async ({source:{category, country, description, name, url}}) => {
-    let linkdata =  await getPreview(url);
-    console.log(linkdata)
-    debugger
+export const CarouselCard = ({source:{category, country, description, name, url}}) => {
   return(
-    // <Card>
-    //   <CardHeader tag="h3">{name}</CardHeader>
-    //   <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-    //   <CardBody>
-    //     <CardTitle>Card title</CardTitle>
-    //     <CardText>{description}</CardText>
-    //   </CardBody>
-    // </Card>
     <Fragment>
       <div class="tile">
         <div class="tile__media">
@@ -45,18 +34,40 @@ const NewsCard = async ({source:{category, country, description, name, url}}) =>
   )
 }
 
-async function getPreview(url){
-  return  fetch(LINK_PREVIEW + url, {
-    method: "GET"
-  }).then(res => res.json())
-  .then(res => {
-    return res;
-  });
+export const NewsFeedCard = ({article:{ source: {name}, category, urlToImage, description, url}}) => {
+  return(
+    <Card>
+      <CardHeader tag="h3">{name}</CardHeader>
+      <CardImg top width="100%" src={urlToImage} alt="Card image cap" />
+      <CardBody>
+        <CardTitle>{name}</CardTitle>
+        <CardText>{description}</CardText>
+      </CardBody>
+    </Card>
+  )
 }
 
+// "source": {
+//         "id": null,
+//         "name": "Washingtonexaminer.com"
+//       },
+//       "author": "https://www.washingtonexaminer.com/author/eddie-scarry",
+//       "title": "Howard Schultz meets the 'ratio' mob - Washington Examiner",
+//
+//       "description": "Potential 2020 candidate and former Starbucks CEO Howard Schultz made his debut Saturday on Twitter. He was immediately met by the mind
+// -numbingly stupid “RATIO!” crowd.",
+//       "url": "https://www.washingtonexaminer.com/opinion/columnists/howard-schultz-meets-the-ratio-mob",
+//       "urlToImage": "https://mediadc.brightspotcdn.com/dims4/default/8201922/2147483647/strip/true/crop/2277x1196+2+0/resize/1200x630!/quality/90/?url=https%
+// 3A%2F%2Fmediadc.brightspotcdn.com%2Fc1%2Ff8%2F57a3a69a4119accdbb29edb21540%2Fap19029018922807.jpg",
+//       "publishedAt": "2019-01-29T19:04:00Z",
+//       "content": "P otential 2020 candidate and former Starbucks CEO Howard Schultz made his debut Saturday on Twitter. He was immediately met by the mind-nu
+// mbingly stupid RATIO! crowd. For the uninitiated, the ratio here is the relationship between the number of replies and t… [+1849 chars]"
+//     }
 
-
-export default NewsCard
+// export {
+//   NewsFeedCard,
+//   CarouselCard
+// }
 
 
 // category: "technology"
