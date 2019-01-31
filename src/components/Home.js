@@ -12,7 +12,6 @@ class Home extends Component {
     fetchArtilces()
   }
 
-
   render(){
     const {sources, articles} = this.props
     return(

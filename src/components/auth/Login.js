@@ -21,7 +21,6 @@ class Login extends Component{
   }
 
   handleChange = (e) => {
-
     let name = e.target.name
     this.setState({
       ...this.state,
@@ -31,8 +30,6 @@ class Login extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-        console.log(this.state)
-
     this.props.login(this.state)
   }
 

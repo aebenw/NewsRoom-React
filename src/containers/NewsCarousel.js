@@ -1,7 +1,6 @@
 import React from 'react'
 import {CarouselCard}  from '../components'
 import{Row} from 'reactstrap'
-// import '../stylesheets/newsCarousel.css'
 import InfiniteCarousel from 'react-leaf-carousel';
 
 
@@ -36,7 +35,7 @@ const NewsCarousel = ({sources}) => {
 
 const renderNews = (sources) => {
   return(
-    sources.map(source => <CarouselCard source={source}/>)
+    sources.map(source => <CarouselCard source={source[0]}/>)
   )
 }
 

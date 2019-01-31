@@ -2,7 +2,7 @@ import { API, HEADERS } from '../../constants';
 import {
   fetchSourcesAction,
   fetchArticlesAction,
-  showSourceAction 
+  showSourceAction
 } from '../'
 
 export function fetchSources(){
@@ -29,6 +29,18 @@ export function fetchArtilces(){
 }
 
 export function showSource(sourceID){
+  console.log(sourceID)
+  return (dispatch) => {
+    return fetch(API + `/news/sources/${sourceID}`, {
+      method: "GET",
+      headers: HEADERS,
+    }).then(res => res.json())
+    .then(source => {
+      dispatch(showSourceAction(source))
+    })
+  }
+}
+export function showArticle(sourceID){
   return (dispatch) => {
     return fetch(API + `/news/sources/${sourceID}`, {
       method: "GET",
