@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { connect } from 'react-redux';
 import {
   Card,
   CardImg,
@@ -9,22 +10,20 @@ import {
   CardText,
   Spinner } from 'reactstrap';
 import { newsIcons } from '../../constants'
-import { showSource } from '../../store'
+import { showSource, showArticle } from '../../store'
 import '../../stylesheets/newsCarousel.css'
 
 
-
-
-export const CarouselCard = ({source:{_id, category, country, description, name, url}}) => {
+const CaroCard = ({source:{_id, category, country, description, name, url}, showSource}) => {
   const randomIcon = newsIcons[Math.floor(Math.random() * newsIcons.length)];
   return(
-    <div  onClick={() => showSource(_id)}>
+    <div onClick={() => showSource(_id)}>
       <img src={randomIcon} alt=""  />
     </div>
   )
 }
 
-export const NewsFeedCard = ({article:{ author, title, category, urlToImage, description, url}}) => {
+export const NewsCard = ({article:{ author, title, category, urlToImage, description, url}}) => {
   return(
     <Card>
       <CardHeader tag="h3">{author}</CardHeader>
@@ -36,3 +35,22 @@ export const NewsFeedCard = ({article:{ author, title, category, urlToImage, des
     </Card>
   )
 }
+
+const mapDispatchToCarousel = (dispatch) => {
+  return {
+    showSource: (id) => {
+      return dispatch(showSource(id))
+    }
+  }
+}
+const mapDispatchToFeed = (dispatch) => {
+  return {
+    showArticle: (id) => {
+      return dispatch(showArticle(id))
+    }
+  }
+}
+
+
+export const CarouselCard = connect (null, mapDispatchToCarousel)(CaroCard)
+export const NewsFeedCard = connect(null, mapDispatchToFeed)(NewsCard)

@@ -12,7 +12,6 @@ import {
 import {signUp} from '../../store'
 
 
-
 class Signup extends Component{
 
   state = {
@@ -21,7 +20,6 @@ class Signup extends Component{
   }
 
   handleChange = (e) => {
-
     let name = e.target.name
     this.setState({
       ...this.state,
