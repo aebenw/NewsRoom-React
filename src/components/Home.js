@@ -1,24 +1,27 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
-import {fetchSources} from '../store'
-import {NewsContainer} from '../containers'
+import {fetchSources, fetchArtilces} from '../store'
+import { NewsCarousel, NewsFeed } from '../containers'
 import { Spinner } from 'reactstrap'
 
 class Home extends Component {
 
   componentDidMount(){
-    const {fetch} = this.props;
-    fetch()
+    const {fetchSources, fetchArtilces} = this.props;
+    fetchSources()
+    fetchArtilces()
   }
 
 
   render(){
-    const {sources} = this.props
-    console.log(sources, "Render of home")
+    const {sources, articles} = this.props
     return(
       <Fragment>
-        {sources.length ?
-          <NewsContainer sources={sources} />
+        {sources.length && articles.length ?
+          <Fragment>
+            <NewsCarousel sources={sources} />
+            <NewsFeed articles={articles} />
+          </Fragment>
           :
           <Spinner color="info" />
         }
@@ -28,16 +31,18 @@ class Home extends Component {
 }
 
 
-const mapState = ({user: {currentUser}, news: {sources}}) => {
+const mapState = ({user: {currentUser}, news: {sources, articles}}) => {
   return {
     currentUser,
-    sources
+    sources,
+    articles
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    fetch: () => {return dispatch(fetchSources())}
+    fetchSources: () => {return dispatch(fetchSources())},
+    fetchArtilces: () => {return dispatch(fetchArtilces())}
   }
 }
 

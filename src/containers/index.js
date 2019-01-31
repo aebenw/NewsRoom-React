@@ -1,2 +1,3 @@
 export {default as App} from './App'
-export {default as NewsContainer} from './NewsContainer'
+export {default as NewsCarousel} from './NewsCarousel'
+export {default as NewsFeed} from './NewsFeed'

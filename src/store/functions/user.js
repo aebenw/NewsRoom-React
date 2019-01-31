@@ -3,7 +3,7 @@ import { logInUser } from '../'
 
 export function login(body){
   return (dispatch) => {
-    return fetch(API + '/login', {
+    return fetch(API + '/user/login', {
       method: "POST",
       headers: HEADERS,
       body: JSON.stringify(body)
@@ -16,7 +16,7 @@ export function login(body){
 
 export function signUp(body){
   return (dispatch) => {
-    return fetch(API + '/users', {
+    return fetch(API + '/user', {
       method: "POST",
       headers: HEADERS,
       body: JSON.stringify(body)
