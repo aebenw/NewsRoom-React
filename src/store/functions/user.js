@@ -21,7 +21,6 @@ export function signUp(body){
       headers: HEADERS,
       body: JSON.stringify(body)
     }).then(res => {
-      // debugger
       return res.json()})
     .then(user => {
       dispatch(logInUser(user))
