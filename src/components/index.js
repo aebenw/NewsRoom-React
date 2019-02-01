@@ -1,3 +1,6 @@
 export * from './auth'
 export * from './news'
+export * from './pages'
+export * from './source'
+export * from './nav'
 export {default as Home} from './Home'
