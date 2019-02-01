@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {
   Card,
@@ -18,7 +19,9 @@ const CaroCard = ({source:{_id, category, country, description, name, url}, show
   const randomIcon = newsIcons[Math.floor(Math.random() * newsIcons.length)];
   return(
     <div onClick={() => showSource(_id)}>
-      <img src={randomIcon} alt=""  />
+      <Link to= {{ pathname: `/source/${_id}`}}>
+        <img src={randomIcon} alt=""  />
+      </Link>
     </div>
   )
 }

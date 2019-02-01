@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react';
+import { withRouter } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import {fetchSources, fetchArtilces} from '../store'
 import { NewsCarousel, NewsFeed } from '../containers'
@@ -45,4 +47,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Home)
+export default withRouter(connect(mapState, mapDispatch)(Home))

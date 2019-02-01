@@ -1,25 +1,19 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Home, Login, SignUp } from '../components'
+import { NavBar } from '../components'
 import { Container } from 'reactstrap'
-// import Signup from '../components'
+import Routes from '../router'
 
 
 
 class App extends Component {
+
   render() {
-    const { currentUser } = this.props
     return (
       <Container>
-        <h1> news app </h1>
-        {currentUser ?
-          <Home />
-          :
-          <Fragment>
-            <Login/>
-            <SignUp/>
-          </Fragment>
-        }
+        <NavBar />
+        <Routes />
       </Container>
     );
   }
@@ -31,4 +25,4 @@ const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(App);
+export default withRouter(connect(mapState)(App));
