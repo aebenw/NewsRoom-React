@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
   Button,
@@ -30,6 +31,7 @@ class Signup extends Component{
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.signUp(this.state)
+    .then(this.props.history.push('/home'))
   }
 
   render(){
@@ -66,4 +68,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatch)(Signup);
+export default withRouter(connect(null, mapDispatch)(Signup));

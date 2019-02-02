@@ -2,7 +2,8 @@ import { API, HEADERS } from '../../constants';
 import {
   fetchSourcesAction,
   fetchArticlesAction,
-  showSourceAction
+  showSourceAction,
+  showArticleAction
 } from '../'
 
 export function fetchSources(){
@@ -29,7 +30,6 @@ export function fetchArtilces(){
 }
 
 export function showSource(sourceID){
-  console.log(sourceID)
   return (dispatch) => {
     return fetch(API + `/news/sources/${sourceID}`, {
       method: "GET",
@@ -40,14 +40,16 @@ export function showSource(sourceID){
     })
   }
 }
-export function showArticle(sourceID){
+export function showArticle(articleID){
   return (dispatch) => {
-    return fetch(API + `/news/sources/${sourceID}`, {
+    return fetch(API + `/news/articles/${articleID}`, {
       method: "GET",
       headers: HEADERS,
-    }).then(res => res.json())
-    .then(source => {
-      dispatch(showSourceAction(source))
+    }).then(res => {
+      return res.json()
+    })
+    .then(article => {
+      dispatch(showArticleAction(article))
     })
   }
 }

@@ -1,18 +1,16 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {
   Card,
   CardImg,
   CardHeader,
-  CardFooter,
   CardBody,
   CardTitle,
-  CardText,
-  Spinner } from 'reactstrap';
+  CardText } from 'reactstrap';
 import { newsIcons } from '../../constants'
 import { showSource, showArticle } from '../../store'
-import '../../stylesheets/newsCarousel.css'
+import '../../stylesheets/newsfeed.css'
 
 
 const CaroCard = ({source:{_id, category, country, description, name, url}, showSource}) => {
@@ -26,11 +24,13 @@ const CaroCard = ({source:{_id, category, country, description, name, url}, show
   )
 }
 
-export const NewsCard = ({article:{ author, title, category, urlToImage, description, url}}) => {
+export const NewsCard = ({article:{ _id, author, title, category, urlToImage, description, url}, showArticle}) => {
   return(
     <Card>
       <CardHeader tag="h3">{author}</CardHeader>
-      <CardImg top width="100%" src={urlToImage} alt="Card image cap" />
+      <Link to={{pathname: `/article/${_id}`}}>
+        <CardImg top width="100%" src={urlToImage} alt="Card image cap" onClick={() => showArticle(_id)}/>
+      </Link>
       <CardBody>
         <CardTitle>{title}</CardTitle>
         <CardText>{description}</CardText>

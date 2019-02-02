@@ -5,7 +5,6 @@ import { NewsFeed } from '../../containers'
 
 
 const ShowSource = ({showSource}) => {
-  console.log(showSource)
   return (
     <Fragment>
       {showSource ?

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { NavBar } from '../components'
@@ -11,10 +11,12 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <Fragment>
         <NavBar />
-        <Routes />
-      </Container>
+        <Container>
+          <Routes />
+        </Container>
+      </Fragment>
     );
   }
 }

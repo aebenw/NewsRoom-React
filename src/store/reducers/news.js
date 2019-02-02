@@ -10,6 +10,9 @@ export default function newsReducer(state = {sources: {}, articles:{}}, action){
     case "SHOW_SOURCE":
     return {...state, showSource: action.source}
 
+    case "SHOW_ARTICLE":
+    return {...state, showArticle: action.article}
+
     default:
     return state
   }
