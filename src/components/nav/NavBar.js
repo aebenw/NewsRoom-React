@@ -4,22 +4,23 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink} from 'reactstrap';
-
+  } from 'reactstrap';
+import { NavLink as RouterLink} from 'react-router-dom'
+import '../../stylesheets/nav.css'
 const NavBar = () => {
   return(
     <Fragment>
       <Navbar>
         <NavbarBrand>NewsRoom</NavbarBrand>
         <Nav>
+          <NavItem>
+              <RouterLink exact to="/home">Home</RouterLink>
+          </NavItem>
           {/* <NavItem>
-            <NavLink>Projects</NavLink>
+            <NavLink>Saved Articles</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>About</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>Contact</NavLink>
+            <NavLink>Saved Sources</NavLink>
           </NavItem> */}
         </Nav>
       </Navbar>

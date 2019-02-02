@@ -1,7 +1,7 @@
 import React from 'react'
 import {NewsFeedCard}  from '../components'
 import{Row, Col} from 'reactstrap'
-import '../stylesheets/newsCarousel.css'
+import '../stylesheets/newsfeed.css'
 
 const NewsFeed = ({articles}) => {
   return(
