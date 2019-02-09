@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
 import { favArticle } from '../../store'
 
-const ShowArticle = ({showArticle, currentUser, favArticle}) => {
+const ShowArticle = ({showArticle, currentUserId, favArticle}) => {
   return (
     <Fragment>
       {showArticle ?
       <Fragment>
-        <button onClick={() => favArticle(showArticle._id)}>
+        <button onClick={() => favArticle(currentUserId,showArticle._id)}>
           Save Article
         </button>
         <a href={showArticle.url}>
@@ -28,7 +28,7 @@ const ShowArticle = ({showArticle, currentUser, favArticle}) => {
 
 const mapState = ({news: {showArticle}, user: {currentUser}}) => {
   return{
-    currentUserId: currentUser.id,
+    currentUserId: currentUser._id,
     showArticle
   }
 }

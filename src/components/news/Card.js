@@ -13,7 +13,7 @@ import { showSource, showArticle } from '../../store'
 import '../../stylesheets/newsfeed.css'
 
 
-const CaroCard = ({source:{_id, category, country, description, name, url}, showSource}) => {
+const CaroCard = ({_id, category, country, description, name, url, showSource}) => {
   const randomIcon = newsIcons[Math.floor(Math.random() * newsIcons.length)];
   return(
     <div onClick={() => showSource(_id)}>

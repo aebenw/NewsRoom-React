@@ -28,7 +28,7 @@ export function signUp(body){
   }
 }
 
-export function favArticle(articleID, userID){
+export function favArticle(userID, articleID){
   userID = userID ? userID : dummyUser
 
   let body = {
