@@ -4,6 +4,7 @@ import{Row, Col} from 'reactstrap'
 import '../stylesheets/newsfeed.css'
 
 const NewsFeed = ({articles}) => {
+  // debugger
   return(
     <Row>
       <Col sm="12" md={{ size: 7, offset: 3 }}>

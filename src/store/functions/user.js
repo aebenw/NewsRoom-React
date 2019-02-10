@@ -35,7 +35,7 @@ export function favArticle(userID, articleID){
     articleID,
     userID
   }
-
+ 
   return (dispatch) => {
     return fetch(API + '/user/favArticle', {
       method: "POST",

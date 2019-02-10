@@ -5,6 +5,7 @@ import { NewsFeed } from '../../containers'
 
 
 const ShowSource = ({showSource}) => {
+  // debugger
   return (
     <Fragment>
       {showSource ?
