@@ -24,15 +24,20 @@ const CaroCard = ({source: {_id, img}, showSource}) => {
   )
 }
 
-export const NewsCard = ({article:{ _id, author, title, category, urlToImage, description, url}, showArticle}) => {
+export const NewsCard = ({article:{ _id, author, title, category, urlToImage, description, url, source}, showArticle}) => {
   return(
     <Card>
-      <CardHeader tag="h3">{author}</CardHeader>
+      {source ?
+      <CardHeader tag="h3">{source.name}</CardHeader>
+      :
+      <CardHeader tag="h3">{url}</CardHeader>
+      }
       <Link to={{pathname: `/article/${_id}`}}>
         <CardImg top width="100%" src={urlToImage} alt="Card image cap" onClick={() => showArticle(_id)}/>
       </Link>
       <CardBody>
         <CardTitle>{title}</CardTitle>
+        <CardTitle>{author}</CardTitle>
         <CardText>{description}</CardText>
       </CardBody>
     </Card>

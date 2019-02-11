@@ -41,6 +41,8 @@ export function showSource(sourceID){
   }
 }
 export function showArticle(articleID){
+    console.log("inside action", articleID)
+
   return (dispatch) => {
     return fetch(API + `/news/articles/${articleID}`, {
       method: "GET",
