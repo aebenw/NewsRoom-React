@@ -16,10 +16,10 @@ const NavBar = () => {
           <NavItem>
               <RouterLink exact to="/home">Home</RouterLink>
           </NavItem>
-          {/* <NavItem>
-            <NavLink>Saved Articles</NavLink>
+           <NavItem>
+            <RouterLink exact to="/home">Saved Articles</RouterLink>
           </NavItem>
-          <NavItem>
+          {/*<NavItem>
             <NavLink>Saved Sources</NavLink>
           </NavItem> */}
         </Nav>
