@@ -11,11 +11,11 @@ import {
   Col,
   Alert } from 'reactstrap';
 
-import { login } from '../../store'
+import { login, signUp } from '../../store'
 
 
 
-class Login extends Component{
+class Auth extends Component{
 
   state = {
     name: '',
@@ -23,8 +23,15 @@ class Login extends Component{
   }
 
   displayErrors = () => {
-    const { loginErrors } = this.props
-    return loginErrors.map(error => <Alert>{error}</Alert>)
+    const { errors, type } = this.props
+    debugger
+    console.log(type, errors)
+    if(type === 'Login'){
+      return errors.loginErrors.map(error => <Alert>{error}</Alert>)
+    } else if (type === SignUp){
+      return errors.signUpErrors.map(error => <Alert>{error}</Alert>)
+    }
+    return null
   }
 
   handleChange = (e) => {
@@ -36,21 +43,26 @@ class Login extends Component{
   }
 
   handleSubmit = (e) => {
-    const {login, history, currentUser} = this.props
+    const {submitAction, history, currentUser} = this.props
     e.preventDefault()
-    login(this.state)
+    submitAction(this.state)
     .then(() => {
       return currentUser.email ? history.push('/home') : null
     })
   }
 
   render(){
-    const {handleChange, handleSubmit, displayErrors, props: { loginErrors }} = this
+    const {handleChange, handleSubmit, displayErrors, props: { errors, type }} = this
     return(
       <Fragment>
-        {loginErrors ? displayErrors() : null}
+        {errors.loginErrors || errors.signUpErrors ?
+          displayErrors() : null}
         <Form onSubmit={(e) => handleSubmit(e)}>
-          <h3>Login</h3>
+          {type === 'Login' ?
+           <h3>Log In</h3>
+           :
+           <h3>Sign Up</h3>
+          }
           <Row form>
             <Col md={6}>
           <FormGroup>
@@ -60,7 +72,7 @@ class Login extends Component{
         </Col>
       </Row>
       <Row form>
-        <Col sm={10}>
+        <Col md={6}>
           <FormGroup>
               <Label for="examplePassword" sm={2}>Password</Label>
               <Input type="password" name="password" id="examplePassword" placeholder="password" onChange={(e) => handleChange(e)}/>
@@ -74,19 +86,34 @@ class Login extends Component{
   }
 }
 
-const mapDispatch = (dispatch) => {
+const mapDispatchForLogin = (dispatch) => {
   return {
-    login: (body) => {
+    submitAction: (body) => {
       return dispatch(login(body))
-    }
+    },
+    type: 'Login'
+  }
+}
+const mapDispatchForSignUp = (dispatch) => {
+  return {
+    submitAction: (body) => {
+      return dispatch(signUp(body))
+    },
+    type: 'SignUp'
   }
 }
 
-const mapState = ({user: {currentUser}, error: { loginErrors }}) => {
+const mapState = ({errors, user: {currentUser} }) => {
   return {
     currentUser,
-    loginErrors
+    errors
   }
 }
 
-export default withRouter(connect(mapState, mapDispatch)(Login));
+const Login = withRouter(connect(mapState, mapDispatchForLogin)(Auth));
+const SignUp = withRouter(connect(mapState, mapDispatchForSignUp)(Auth));
+
+export {
+  Login,
+  SignUp
+}
