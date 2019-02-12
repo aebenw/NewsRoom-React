@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Fragment, Component} from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
@@ -8,9 +8,10 @@ import {
   Label,
   Input,
   Row,
-  Col } from 'reactstrap';
+  Col,
+  Alert } from 'reactstrap';
 
-import {login} from '../../store'
+import { login } from '../../store'
 
 
 
@@ -19,6 +20,11 @@ class Login extends Component{
   state = {
     name: '',
     password: ''
+  }
+
+  displayErrors = () => {
+    const { loginErrors } = this.props
+    return loginErrors.map(error => <Alert>{error}</Alert>)
   }
 
   handleChange = (e) => {
@@ -30,33 +36,40 @@ class Login extends Component{
   }
 
   handleSubmit = (e) => {
+    const {login, history, currentUser} = this.props
     e.preventDefault()
-    this.props.login(this.state)
-    .then(this.props.history.push('/home'))
+    login(this.state)
+    .then(() => {
+      return currentUser.email ? history.push('/home') : null
+    })
   }
 
   render(){
+    const {handleChange, handleSubmit, displayErrors, props: { loginErrors }} = this
     return(
-      <Form onSubmit={(e) => this.handleSubmit(e)}>
-        <h3>Login</h3>
-        <Row form>
-          <Col md={6}>
-        <FormGroup>
-          <Label for="exampleEmail" sm={2}>Email</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="email" onChange={(e) => this.handleChange(e)}/>
-        </FormGroup>
-      </Col>
-    </Row>
-    <Row form>
-      <Col sm={10}>
-        <FormGroup>
-            <Label for="examplePassword" sm={2}>Password</Label>
-            <Input type="password" name="password" id="examplePassword" placeholder="password" onChange={(e) => this.handleChange(e)}/>
-        </FormGroup>
-      </Col>
+      <Fragment>
+        {loginErrors ? displayErrors() : null}
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          <h3>Login</h3>
+          <Row form>
+            <Col md={6}>
+          <FormGroup>
+            <Label for="exampleEmail" sm={2}>Email</Label>
+            <Input type="email" name="email" id="exampleEmail" placeholder="email" onChange={(e) => handleChange(e)}/>
+          </FormGroup>
+        </Col>
       </Row>
-        <Button>Submit</Button>
-      </Form>
+      <Row form>
+        <Col sm={10}>
+          <FormGroup>
+              <Label for="examplePassword" sm={2}>Password</Label>
+              <Input type="password" name="password" id="examplePassword" placeholder="password" onChange={(e) => handleChange(e)}/>
+          </FormGroup>
+        </Col>
+        </Row>
+          <Button>Submit</Button>
+        </Form>
+      </Fragment>
     )
   }
 }
@@ -69,4 +82,11 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default withRouter(connect(null, mapDispatch)(Login));
+const mapState = ({user: {currentUser}, error: { loginErrors }}) => {
+  return {
+    currentUser,
+    loginErrors
+  }
+}
+
+export default withRouter(connect(mapState, mapDispatch)(Login));
