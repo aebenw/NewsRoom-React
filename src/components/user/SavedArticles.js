@@ -1,11 +1,19 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, Component} from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
 import { NewsFeed } from '../../containers'
 
+import { getFavArticles, showArticle } from '../../store'
 
-const ShowSource = ({showSource}) => {
+
+class FavArticles extends Component {
   // debugger
+
+  componentDidMount(){
+    const { articles } = this.props
+
+  }
+
   return (
     <Fragment>
       {showSource ?

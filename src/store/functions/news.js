@@ -55,3 +55,13 @@ export function showArticle(articleID){
     })
   }
 }
+
+export function getFavArticles(articles){
+  return (dispatch) => {
+    return fetch(API + 'news/articles', {
+      method: 'POST',
+      headers: HEADERS,
+    })
+
+  }
+}

@@ -29,9 +29,11 @@ class Signup extends Component{
   }
 
   handleSubmit = (e) => {
+    const {signUp, history, currentUser} = this.props
     e.preventDefault()
-    this.props.signUp(this.state)
-    .then(this.props.history.push('/home'))
+    signUp(this.state)
+    .then(() =>  currentUser.email ? history.push('/home') : null
+    )
   }
 
   render(){
@@ -68,4 +70,11 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default withRouter(connect(null, mapDispatch)(Signup));
+const mapState = ({user: {currentUser}, error: { loginErrors }}) => {
+  return {
+    currentUser,
+    loginErrors
+  }
+}
+
+export default withRouter(connect(mapState, mapDispatch)(Signup));
