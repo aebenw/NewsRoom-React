@@ -1,7 +1,8 @@
 import { API, HEADERS, dummyUser } from '../../constants/';
 import {
   logInUser,
-  loginErrorAction
+  loginErrorAction,
+  signUpErrorAction
 } from '../'
 
 export function login(body){
@@ -23,7 +24,7 @@ export function signUp(body){
       body: JSON.stringify(body)
     }).then(res => {
       return res.json()})
-    .then(user => user.errors ? dispatch(loginErrorAction(user.errors)) : dispatch(logInUser(user))
+    .then(user => user.errors ? dispatch(signUpErrorAction(user.errors)) : dispatch(logInUser(user))
     )
   }
 }

@@ -1,10 +1,10 @@
 import user from './user';
 import news from './news';
-import error from './error';
+import errors from './error';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
   user,
   news,
-  error
+  errors
 })
