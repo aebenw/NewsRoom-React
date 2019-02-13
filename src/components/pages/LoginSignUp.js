@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import classnames from 'classnames'
 // import { connect } from 'react-redux'
 // import { withRouter } from 'react-router-dom'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 
 import { Login, SignUp } from '../';
 

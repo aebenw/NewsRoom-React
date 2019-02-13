@@ -8,13 +8,12 @@ import {
   CardBody,
   CardTitle,
   CardText } from 'reactstrap';
-import { newsIcons } from '../../constants'
 import { showSource, showArticle } from '../../store'
 import '../../stylesheets/newsfeed.css'
 
 
 const CaroCard = ({source: {_id, img}, showSource}) => {
-  // const randomIcon = newsIcons[Math.floor(Math.random() * newsIcons.length)];
+
   return(
     <div onClick={() => showSource(_id)}>
       <Link to= {{ pathname: `/source/${_id}`}}>

@@ -15,6 +15,7 @@ class Home extends Component {
   }
 
   render(){
+    console.log(document.cookie)
     const {sources, articles} = this.props
     return(
       <Fragment>

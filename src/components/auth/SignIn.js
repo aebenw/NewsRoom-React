@@ -25,7 +25,6 @@ class Auth extends Component{
   displayErrors = () => {
     const { errors, type } = this.props
     debugger
-    console.log(type, errors)
     if(type === 'Login'){
       return errors.loginErrors.map(error => <Alert>{error}</Alert>)
     } else if (type === SignUp){
@@ -43,6 +42,7 @@ class Auth extends Component{
   }
 
   handleSubmit = (e) => {
+    console.log("in submit")
     const {submitAction, history, currentUser} = this.props
     e.preventDefault()
     submitAction(this.state)

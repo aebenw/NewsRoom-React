@@ -14,14 +14,14 @@ const NavBar = () => {
         <NavbarBrand>NewsRoom</NavbarBrand>
         <Nav>
           <NavItem>
-              <RouterLink exact to="/home">Home</RouterLink>
+            <RouterLink exact to="/home">Home</RouterLink>
           </NavItem>
            <NavItem>
             <RouterLink exact to="/home">Saved Articles</RouterLink>
           </NavItem>
-          {/*<NavItem>
-            <NavLink>Saved Sources</NavLink>
-          </NavItem> */}
+          <NavItem>
+            <RouterLink to='/source/search'>Search Sources</RouterLink>
+          </NavItem>
         </Nav>
       </Navbar>
     </Fragment>
