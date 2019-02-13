@@ -3,7 +3,8 @@ import {
   fetchSourcesAction,
   fetchArticlesAction,
   showSourceAction,
-  showArticleAction
+  showArticleAction,
+  foundSources
 } from '../'
 
 export function fetchSources(){
@@ -62,6 +63,19 @@ export function getFavArticles(articles){
       method: 'POST',
       headers: HEADERS,
     })
+  }
+}
 
+export function searchSources(source){
+  return (dispatch) => {
+    return fetch(API + '/news/sources/search', {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(source)
+    }).then(res => res.json())
+    .then(sources => {
+      console.log(sources)
+      dispatch(foundSources(sources))
+    })
   }
 }
