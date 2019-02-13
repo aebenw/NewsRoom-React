@@ -5,7 +5,6 @@ import { NewsFeed } from '../../containers'
 
 
 const ShowSource = ({showSource}) => {
-  // debugger
   return (
     <Fragment>
       {showSource ?
@@ -25,7 +24,6 @@ const ShowSource = ({showSource}) => {
 
 
 const mapState = ({news: {showSource}}) => {
-
   return{
     showSource
   }

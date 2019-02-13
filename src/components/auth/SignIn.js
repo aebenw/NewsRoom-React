@@ -24,10 +24,9 @@ class Auth extends Component{
 
   displayErrors = () => {
     const { errors, type } = this.props
-    debugger
-    if(type === 'Login'){
+    if(type === 'Login' && errors.loginErrors){
       return errors.loginErrors.map(error => <Alert>{error}</Alert>)
-    } else if (type === SignUp){
+    } else if (type === "SignUp" && errors.signUpErrors){
       return errors.signUpErrors.map(error => <Alert>{error}</Alert>)
     }
     return null
@@ -42,13 +41,10 @@ class Auth extends Component{
   }
 
   handleSubmit = (e) => {
-    console.log("in submit")
     const {submitAction, history, currentUser} = this.props
     e.preventDefault()
     submitAction(this.state)
-    .then(() => {
-      return currentUser.email ? history.push('/home') : null
-    })
+    .then(() =>  currentUser.email ? history.push('/home') : null)
   }
 
   render(){

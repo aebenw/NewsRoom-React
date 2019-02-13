@@ -14,7 +14,6 @@ export default function newsReducer(state = {sources: {}, articles:{}}, action){
     return {...state, showArticle: action.article};
 
     case "FOUND_SOURCES":
-    console.log(action)
     return {...state, foundSources: action.sources}
 
     default:

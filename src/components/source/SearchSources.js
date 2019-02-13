@@ -15,7 +15,7 @@ import { searchSources } from '../../store'
 
 class SearchSources extends Component {
 
-  state={
+  state = {
     source: ''
   }
 
@@ -25,7 +25,7 @@ class SearchSources extends Component {
     this.setState({
       ...this.state,
       source
-    }, () => console.log(this.state))
+    })
   }
 
   handleSubmit = (e) => {
