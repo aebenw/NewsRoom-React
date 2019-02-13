@@ -13,14 +13,12 @@ export function login(body){
       headers: HEADERS,
       credentials: 'include',
       body: JSON.stringify(body)
-    }).then(res => {
-      console.log(res)
-      return res.json()})
+    }).then(res => res.json())
     .then(user => {
       if(user.errors){
         dispatch(loginErrorAction(user.errors))
       } else {
-        localStorage.setItem("session", user.session)
+        localStorage.setItem("token", user.token)
         dispatch(logInUser(user.user))
      }
    })
@@ -34,10 +32,15 @@ export function signUp(body){
       headers: HEADERS,
       body: JSON.stringify(body)
     }).then(res => {
-      debugger
       return res.json()})
-    .then(user => user.errors ? dispatch(signUpErrorAction(user.errors)) : dispatch(logInUser(user))
-    )
+    .then(user => {
+      if(user.errors) {
+        dispatch(signUpErrorAction(user.errors))
+      } else {
+        localStorage.setItem("token", user.token)
+        dispatch(logInUser(user))
+      }
+    })
   }
 }
 
@@ -54,23 +57,21 @@ export function favArticle(userID, articleID){
       method: "POST",
       headers: HEADERS,
       body: JSON.stringify(body)
-    }).then(res => {
-      return res.json()})
+    }).then(res => res.json())
     .then(user => {
       dispatch(logInUser(user))
     })
   }
 }
 
-export function retrieveSession(session){
+export function retrieveWithToken(token){
+  let body = {token}
   return(dispatch) => {
     return fetch(API + '/user/session', {
-      method: "GET",
+      method: "POST",
       headers: HEADERS,
-      credentials: 'include'
-    }).then(res =>{
-      debugger
-      return res.json()})
+      body: JSON.stringify(body)
+    }).then(res => res.json())
     .then(user => {
       dispatch(logInUser(user))
     })

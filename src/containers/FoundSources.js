@@ -14,7 +14,6 @@ const FoundSourceFeed = ({sources}) => {
 }
 
 const renderNews = (sources) => {
-  console.log(sources)
   return(
     sources.map(source => <CarouselCard source={source}/>)
   )

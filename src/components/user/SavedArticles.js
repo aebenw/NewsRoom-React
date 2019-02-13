@@ -14,21 +14,23 @@ class FavArticles extends Component {
 
   }
 
+  render(){
   return (
-    <Fragment>
-      {showSource ?
       <Fragment>
-        <h1>{showSource.name}</h1>
-        <h1>{showSource.description}</h1>
-        { showSource.articles.length ?
-          <NewsFeed articles={showSource.articles} />
-          : null
-        }
+        {showSource ?
+        <Fragment>
+          <h1>{showSource.name}</h1>
+          <h1>{showSource.description}</h1>
+          { showSource.articles.length ?
+            <NewsFeed articles={showSource.articles} />
+            : null
+          }
+        </Fragment>
+        : null
+      }
       </Fragment>
-      : null
-    }
-    </Fragment>
-  )
+    )
+  }
 }
 
 

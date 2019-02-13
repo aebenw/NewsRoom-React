@@ -3,27 +3,26 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { NavBar } from '../components'
 import { Container } from 'reactstrap'
-import { session } from '../constants'
-import {retrieveSession} from '../store'
+import { token } from '../constants'
+import {retrieveWithToken} from '../store'
 import Routes from '../router'
 
 
 
 class App extends Component {
-  // 
-  //   componentDidMount(){
-  //     console.log(session)
-  //   const { retrieveSession, currentUser } = this.props;
-  //   const { history } = this.props
-  //   if (session && !currentUser.email) {
-  //     retrieveSession(session)
-  //     .then(() => history.push("/home"))
-  //   } else if (currentUser.email) {
-  //     this.props.history.push('/home')
-  //   } else {
-  //     this.props.history.push('/')
-  //   }
-  // }
+
+    componentDidMount(){
+    const { retrieveWithToken, currentUser } = this.props;
+    const { history } = this.props
+    if (token && !currentUser.email) {
+      retrieveWithToken(token)
+      .then(() => history.push("/home"))
+    } else if (currentUser.email) {
+      this.props.history.push('/home')
+    } else {
+      this.props.history.push('/')
+    }
+  }
 
 
   render() {
@@ -45,8 +44,8 @@ const mapState = ({user: {currentUser}}) => {
 }
 const mapDispatch = (dispatch) => {
   return {
-    retrieveSession: () => {
-      return dispatch(retrieveSession(session))
+    retrieveWithToken: (token) => {
+      return dispatch(retrieveWithToken(token))
     }
   }
 }
