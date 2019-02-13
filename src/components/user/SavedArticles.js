@@ -3,28 +3,26 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
 import { NewsFeed } from '../../containers'
 
-import { getFavArticles, showArticle } from '../../store'
+import { getSavedArticles, showArticle } from '../../store'
 
 
-class FavArticles extends Component {
-  // debugger
+class SavedArticles extends Component {
 
   componentDidMount(){
-    const { articles } = this.props
-
+    const { articles, getSavedArticles } = this.props
+    console.log(articles, "in comp did mount")
+    getSavedArticles(articles)
   }
 
   render(){
-  return (
+    const {savedArticles} = this.props
+    return (
       <Fragment>
-        {showSource ?
+        <h1>Your saved articles</h1>
+        {savedArticles ?
         <Fragment>
-          <h1>{showSource.name}</h1>
-          <h1>{showSource.description}</h1>
-          { showSource.articles.length ?
-            <NewsFeed articles={showSource.articles} />
-            : null
-          }
+            <NewsFeed articles={savedArticles} />
+
         </Fragment>
         : null
       }
@@ -34,11 +32,19 @@ class FavArticles extends Component {
 }
 
 
-const mapState = ({user: {currentUser: {articles}}}) => {
-
+const mapState = ({user: {currentUser: {articles, savedArticles}}}) => {
   return{
-    articles
+    articles,
+    savedArticles
   }
 }
 
-export default withRouter(connect(mapState)(ShowSource))
+const mapDispatch = (dispatch) => {
+  return{
+    getSavedArticles: (articles) => {
+      return dispatch(getSavedArticles(articles))
+    }
+  }
+}
+
+export default withRouter(connect(mapState, mapDispatch)(SavedArticles))

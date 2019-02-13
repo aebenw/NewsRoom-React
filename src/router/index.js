@@ -1,22 +1,26 @@
 import React, { Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import {
   LoginSignUp,
   Home,
-  ShowSource, 
+  ShowSource,
   ShowArticle,
-  SearchSources
+  SearchSources,
+  SavedArticles
 } from '../components'
 
 
 const Routes = () => {
   return(
     <Fragment>
-      <Route exact path='/' component={LoginSignUp}/>
-      <Route exact path='/home' render={routerProps => <Home {...routerProps}/>} />
-      <Route exact path='/source/search' render={routerProps => <SearchSources {...routerProps}/>} />
-      <Route path={`/source/:_id`} render={ShowSource} />
-      <Route path={`/article/:_id`} render={ShowArticle} />
+      <Switch>
+        <Route exact path='/' component={LoginSignUp}/>
+        <Route exact path='/home' render={routerProps => <Home {...routerProps}/>} />
+        <Route exact path='/source/search' component={SearchSources} />
+        <Route exact path='/article/saved' render={routerProps => <SavedArticles {...routerProps}/>} />
+        <Route path={`/source/:_id`} component={ShowSource} />
+        <Route path={`/article/:_id`} render={ShowArticle} />
+      </Switch>
     </Fragment>
   )
 }
