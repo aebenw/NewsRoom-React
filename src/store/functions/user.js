@@ -3,7 +3,9 @@ import {
   logInUser,
   loginErrorAction,
   signUpErrorAction,
-  session
+  favArticleAction,
+  savedArticlesAction
+
 } from '../'
 
 export function login(body){
@@ -58,8 +60,10 @@ export function favArticle(userID, articleID){
       headers: HEADERS,
       body: JSON.stringify(body)
     }).then(res => res.json())
-    .then(user => {
-      dispatch(logInUser(user))
+    .then(response => {
+      if(response.success){
+        dispatch(favArticleAction(articleID))
+      }
     })
   }
 }
@@ -74,6 +78,21 @@ export function retrieveWithToken(token){
     }).then(res => res.json())
     .then(user => {
       dispatch(logInUser(user))
+    })
+  }
+}
+
+export function getSavedArticles(articles){
+  let body = {articles}
+  return(dispatch) => {
+    return fetch(API + '/user/articles', {
+      method: "POST",
+      headers: HEADERS,
+      body: JSON.stringify(body)
+    }).then(res => res.json())
+    .then(articles => {
+      console.log(articles, "in fetch function")
+      dispatch(savedArticlesAction(articles))
     })
   }
 }

@@ -17,7 +17,7 @@ const NavBar = () => {
             <RouterLink exact to="/home">Home</RouterLink>
           </NavItem>
            <NavItem>
-            <RouterLink exact to="/home">Saved Articles</RouterLink>
+            <RouterLink exact to="/article/saved">Saved Articles</RouterLink>
           </NavItem>
           <NavItem>
             <RouterLink to='/source/search'>Search Sources</RouterLink>
