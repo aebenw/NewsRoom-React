@@ -15,12 +15,12 @@ The api uses Node.js with Express and mongoDB.
 
 ### For Backend
 
-* I'm currently in the process of implementing ApolloGraphQL in the backend in order to simplify reaching out to third party api's. Specifically the NewsAPI, in order to get only the information I need rather than sort through it all.
+* Currently in the process of implementing ApolloGraphQL to simplify GET requests to third party api's. Specifically the NewsAPI, in order to get only the information I need rather than sort through it all.
 
-* I'm testing out Redis to cache both news sources and top headlines. Sources I've successfully managed to cache sources in development. I'm working on creating a linked list structure for the headlines which updates when there's a new batch of stories.
+* Testing out Redis to cache both news sources and top headlines. I've successfully managed to cache sources in development. I'm working on creating a linked list structure for the headlines which updates when there's a new batch of stories.
 
 ### For Frontend
 
-A lot of css clean up needs to be done.
+* CSS clean up needs to be done.
 
-Working on a search function for sources.
+* Working on a search function for sources.
