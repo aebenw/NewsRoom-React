@@ -1,11 +1,14 @@
 # Welcome to NewsRoom
 
-NewsRoom uses the NewsAPI (NewsAPI.org) to compile the top headlines and news sources.
+NewsRoom uses the [NewsAPI](NewsAPI.org) to compile the top headlines and news sources.
 
 You can save articles and view them later as well. You can also see all the articles published by a news Source.
 
 The client side uses a react frontend with a redux store.
 The api uses Node.js with Express and mongoDB.
+
+[Heroku Url](https://protected-bayou-40913.herokuapp.com/)
+*Please be patient! Running on the free Dyno so it'll take a moment to boot up*
 
 
 ##Currently undergoing construction
