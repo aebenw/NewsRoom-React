@@ -1,4 +1,4 @@
-Welcome to NewsRoom
+# Welcome to NewsRoom
 
 NewsRoom uses the NewsAPI (NewsAPI.org) to compile the top headlines and news sources.
 
@@ -8,15 +8,15 @@ The client side uses a react frontend with a redux store.
 The api uses Node.js with Express and mongoDB.
 
 
-// Currently undergoing construction
+##Currently undergoing construction
 
--For Backend
+###For Backend
 
-I'm currently in the process of implementing ApolloGraphQL in the backend in order to simplify reaching out to third party api's. Specifically the NewsAPI, in order to get only the information I need rather than sort through it all.
+* I'm currently in the process of implementing ApolloGraphQL in the backend in order to simplify reaching out to third party api's. Specifically the NewsAPI, in order to get only the information I need rather than sort through it all.
 
-I'm testing out Redis to cache both news sources and top headlines. Sources I've successfully managed to cache sources in development. I'm working on creating a linked list structure for the headlines which updates when there's a new batch of stories.
+* I'm testing out Redis to cache both news sources and top headlines. Sources I've successfully managed to cache sources in development. I'm working on creating a linked list structure for the headlines which updates when there's a new batch of stories.
 
--For Frontend
+###For Frontend
 
 A lot of css clean up needs to be done.
 
