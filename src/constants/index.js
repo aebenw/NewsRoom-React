@@ -1,5 +1,5 @@
-export const API = 'http://localhost:3001';
-// export const API = 'https://news-room-api.herokuapp.com';
+// export const API = 'http://localhost:3001';
+export const API = 'https://news-room-api.herokuapp.com';
 export const HEADERS = {
   "Content-Type": "application/json",
   Accept: "application/json"

@@ -15,7 +15,7 @@ class App extends Component {
     const { retrieveWithToken, currentUser } = this.props;
     const { history } = this.props
     console.log(token)
-    if (token !== 'undefined' && !currentUser.email) {
+    if (token && !currentUser.email) {
       retrieveWithToken(token)
       .then(() => history.push("/home"))
     } else if (currentUser.email) {

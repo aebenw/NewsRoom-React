@@ -19,7 +19,6 @@ export function login(body){
       if(user.errors){
         dispatch(loginErrorAction(user.errors))
       } else {
-        console.log(user.token, "token from login function")
         localStorage.setItem("NewsRoomToken", user.token)
         dispatch(logInUser(user.user))
      }
