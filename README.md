@@ -19,7 +19,7 @@ The api uses Node.js with Express and mongoDB.
 
 * I'm testing out Redis to cache both news sources and top headlines. Sources I've successfully managed to cache sources in development. I'm working on creating a linked list structure for the headlines which updates when there's a new batch of stories.
 
-###For Frontend
+### For Frontend
 
 A lot of css clean up needs to be done.
 
