@@ -22,6 +22,11 @@ class Auth extends Component{
     password: ''
   }
 
+  componentDidUpdate(prevProps) {
+    const { history, currentUser } = this.props
+    return prevProps.currentUser !== currentUser ? history.push('/home') : null
+  }
+
   displayErrors = () => {
     const { errors, type } = this.props
     if(type === 'Login' && errors.loginErrors){
@@ -44,7 +49,6 @@ class Auth extends Component{
     const {submitAction, history, currentUser} = this.props
     e.preventDefault()
     submitAction(this.state)
-    .then(() =>  currentUser.email ? history.push('/home') : null)
   }
 
   render(){

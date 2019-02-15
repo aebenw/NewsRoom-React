@@ -13,7 +13,6 @@ export function login(body){
     return fetch(API + '/user/login', {
       method: "POST",
       headers: HEADERS,
-      credentials: 'include',
       body: JSON.stringify(body)
     }).then(res => res.json())
     .then(user => {
