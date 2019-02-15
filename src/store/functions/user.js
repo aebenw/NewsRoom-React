@@ -19,7 +19,8 @@ export function login(body){
       if(user.errors){
         dispatch(loginErrorAction(user.errors))
       } else {
-        localStorage.setItem("token", user.token)
+        console.log(user.token, "token from login function")
+        localStorage.setItem("NewsRoomToken", user.token)
         dispatch(logInUser(user.user))
      }
    })
@@ -38,8 +39,8 @@ export function signUp(body){
       if(user.errors) {
         dispatch(signUpErrorAction(user.errors))
       } else {
-        localStorage.setItem("token", user.token)
-        dispatch(logInUser(user))
+        localStorage.setItem("NewsRoomToken", user.token)
+        dispatch(logInUser(user.user))
       }
     })
   }
@@ -90,7 +91,6 @@ export function getSavedArticles(articles){
       body: JSON.stringify(body)
     }).then(res => res.json())
     .then(articles => {
-      console.log(articles, "in fetch function")
       dispatch(savedArticlesAction(articles))
     })
   }

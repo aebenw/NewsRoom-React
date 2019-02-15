@@ -23,7 +23,7 @@ class NavBar extends Component {
 }
 
   render(){
-    const { currentUser } = this.props
+    const { currentUserID } = this.props
     return(
       <Fragment>
         <Navbar>
@@ -40,7 +40,7 @@ class NavBar extends Component {
             <NavItem>
               <RouterLink to='/source/search'>Search Sources</RouterLink>
             </NavItem>
-            { currentUser.email ?
+            { currentUserID ?
             <NavItem>
               {/* <RouterLink exact to='/home' onClick={() => delteJWT()}>| Log Out</RouterLink> */}
               <p onClick={() => this.delteJWT()}>| Log Out</p>
@@ -58,7 +58,7 @@ class NavBar extends Component {
 
 const mapState = ({user: {currentUser}}) => {
   return {
-    currentUser
+    currentUserID: currentUser._id
   }
 }
 
