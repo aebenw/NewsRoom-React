@@ -11,9 +11,9 @@ The api uses Node.js with Express and mongoDB.
 *Please be patient! Running on the free Dyno so it'll take a moment to boot up*
 
 
-##Currently undergoing construction
+## Currently undergoing construction
 
-###For Backend
+### For Backend
 
 * I'm currently in the process of implementing ApolloGraphQL in the backend in order to simplify reaching out to third party api's. Specifically the NewsAPI, in order to get only the information I need rather than sort through it all.
 
