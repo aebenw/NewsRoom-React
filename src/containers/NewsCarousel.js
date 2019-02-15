@@ -9,7 +9,7 @@ const NewsCarousel = ({sources}) => {
     <Fragment>
       <Row>
         <Col sm="12" md={{ size: 7, offset: .8 }}>
-          <h2><Badge>Current Top News Sources</Badge></h2>
+          <h2><Badge>News Sources</Badge></h2>
         </Col>
       </Row>
       <InfiniteCarousel

@@ -55,6 +55,7 @@ export function showArticle(articleID){
 
 
 export function searchSources(source){
+  console.log(source)
   return (dispatch) => {
     return fetch(API + '/news/sources/search', {
       method: 'POST',
@@ -62,6 +63,7 @@ export function searchSources(source){
       body: JSON.stringify(source)
     }).then(res => res.json())
     .then(sources => {
+      console.log(sources)
       dispatch(foundSources(sources))
     })
   }
