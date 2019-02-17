@@ -25,6 +25,7 @@ export function fetchArtilces(){
       headers: HEADERS,
     }).then(res => res.json())
     .then(articles => {
+      articles = articles.map(story => JSON.parse(story))
       dispatch(fetchArticlesAction(articles))
     })
   }

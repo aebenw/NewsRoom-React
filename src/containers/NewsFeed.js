@@ -5,8 +5,9 @@ import '../stylesheets/newsfeed.css'
 
 const NewsFeed = ({articles}) => {
   return(
-    <Row>
-      <Col sm="12" md={{ size: 7, offset: 3 }}>
+    <Row className="newsfeed">
+      <Col sm="12" md="7">
+      {/* <Col sm="12" md={{ size: 7, offset: 3 }}> */}
         {renderNews(articles)}
       </Col>
     </Row>

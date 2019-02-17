@@ -16,6 +16,10 @@ class ShowArticle extends Component {
     }
   }
 
+  componentWillUnmount(){
+    this.props.unmountArticle()
+  }
+
   render(){
     const { showArticle, currentUserId, favArticle } = this.props
     return (
@@ -58,7 +62,8 @@ const mapDispatch = (dispatch) => {
       return dispatch(favArticle(id, user))
     },
     showArticleAction: (id) =>
-    dispatch(showArticle(id))
+    dispatch(showArticle(id)),
+    unmountArticle: () => dispatch({type: 'UNMOUNT_ARTICLE'})
   }
 }
 

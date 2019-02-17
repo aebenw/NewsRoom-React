@@ -19,7 +19,7 @@ const Routes = () => {
         <Route exact path='/home' render={routerProps => <Home {...routerProps}/>} />
         <Route exact path='/source/search' component={SearchSources} />
         <Route exact path='/article/saved' render={routerProps => <SavedArticles {...routerProps}/>} />
-        <Route path={`/source/:_id`} component={ShowSource} />
+        <Route path={`/source/:_id`} render={ShowSource} />
         <Route path={`/article/:_id`} render={ShowArticle} />
       </Switch>
     </Fragment>
