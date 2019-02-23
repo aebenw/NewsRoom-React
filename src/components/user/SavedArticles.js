@@ -10,7 +10,6 @@ class SavedArticles extends Component {
 
   componentDidMount(){
     const { articles, getSavedArticles } = this.props
-    console.log(articles, "in comp did mount")
     getSavedArticles(articles)
   }
 
