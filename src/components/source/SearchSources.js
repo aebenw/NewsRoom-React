@@ -9,14 +9,19 @@ import {
 import { FoundSourceFeed } from '../../containers'
 import {withRouter} from 'react-router-dom'
 import { searchSources } from '../../store'
+import _ from 'lodash'
 
 
 
 
 class SearchSources extends Component {
 
-  state = {
-    source: ''
+  constructor(props){
+    super(props)
+    this.state = {
+      source: ''
+    }
+    this.searchAsync = _.debounce(this.props.searchSources, 300)
   }
 
   handleChange = (e) => {
@@ -26,6 +31,7 @@ class SearchSources extends Component {
       ...this.state,
       source
     })
+    this.searchAsync(this.state)
   }
 
   handleSubmit = (e) => {
