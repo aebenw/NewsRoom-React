@@ -1,6 +1,6 @@
-// export const API =
-export const API = process.env.API_URL || 'http://localhost:3001';
-console.log(API)
+export const API = "https://news-room-api.herokuapp.com"
+// export const API = process.env.API_URL || 'http://localhost:3001';
+// console.log(API)
 export const HEADERS = {
   "Content-Type": "application/json",
   Accept: "application/json"
