@@ -16,7 +16,7 @@ const NewsFeed = ({articles}) => {
 
 const renderNews = (articles) => {
   return(
-    articles.map(article => <NewsFeedCard article={article}/>)
+    articles.map(article => <NewsFeedCard key={article.id} article={article}/>)
   )
 }
 

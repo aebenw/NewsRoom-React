@@ -24,19 +24,33 @@ const CaroCard = ({source: {_id, img}, showSource}) => {
 }
 
 export const NewsCard = ({article:{ _id, author, title, category, urlToImage, description, url, source}, showArticle}) => {
+  let hostname
+  if(!source){
+    if (url.indexOf("//") > -1) {
+        hostname = url.split('/')[2];
+    }
+    else {
+        hostname = url.split('/')[0];
+    }
+
+    //find & remove port number
+    hostname = hostname.split(':')[0];
+    //find & remove "?"
+    hostname = hostname.split('?')[0];
+  }
   return(
     <Card>
       {source ?
       <CardHeader tag="h3">{source.name}</CardHeader>
       :
-      <CardHeader tag="h3">{url}</CardHeader>
+      <CardHeader tag="h3">{hostname}</CardHeader>
       }
       <Link to={{pathname: `/article/${_id}`}}>
         <CardImg top width="100%" src={urlToImage} alt="Card image cap" onClick={() => showArticle(_id)}/>
       </Link>
       <CardBody>
-        <CardTitle>{title}</CardTitle>
-        <CardTitle>{author}</CardTitle>
+        <CardTitle className="desc">{title}</CardTitle>
+        <CardTitle>BY: {author || "Suzie McGee"}</CardTitle>
         <CardText>{description}</CardText>
       </CardBody>
     </Card>

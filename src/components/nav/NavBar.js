@@ -6,12 +6,23 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
   } from 'reactstrap';
 import { NavLink as RouterLink} from 'react-router-dom'
 import '../../stylesheets/nav.css'
 
 import {logOutUser} from '../../store/actions/user'
+
+// Logged Out NavBar
+
+const LogedOutNav = () => {
+  return(
+    <Navbar>
+      <NavbarBrand>
+        <RouterLink exact to='/'>NewsRoom</RouterLink>
+      </NavbarBrand>
+    </Navbar>
+  )
+}
 
 class NavBar extends Component {
 
@@ -23,7 +34,6 @@ class NavBar extends Component {
 }
 
   render(){
-    const { currentUserID } = this.props
     return(
       <Fragment>
         <Navbar>
@@ -40,26 +50,15 @@ class NavBar extends Component {
             <NavItem>
               <RouterLink to='/source/search'>Search Sources</RouterLink>
             </NavItem>
-            { currentUserID ?
             <NavItem>
-              {/* <RouterLink exact to='/home' onClick={() => delteJWT()}>| Log Out</RouterLink> */}
               <p onClick={() => this.delteJWT()}>| Log Out</p>
             </NavItem>
-            : null
-          }
           </Nav>
         </Navbar>
       </Fragment>
     )
   }
 
-}
-
-
-const mapState = ({user: {currentUser}}) => {
-  return {
-    currentUserID: currentUser._id
-  }
 }
 
 const mapDispatch = (dispatch) => {
@@ -70,4 +69,5 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapState, mapDispatch)(NavBar))
+export const LoggedInNav = withRouter(connect(null, mapDispatch)(NavBar))
+export const LoggedOutNav = withRouter(LogedOutNav)

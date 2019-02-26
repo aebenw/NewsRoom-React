@@ -46,7 +46,7 @@ class Auth extends Component{
   }
 
   handleSubmit = (e) => {
-    const {submitAction, history, currentUser} = this.props
+    const {submitAction} = this.props
     e.preventDefault()
     submitAction(this.state)
   }
@@ -67,7 +67,7 @@ class Auth extends Component{
             <Col md={6}>
           <FormGroup>
             <Label for="exampleEmail" sm={2}>Email</Label>
-            <Input type="email" name="email" id="exampleEmail" placeholder="email" onChange={(e) => handleChange(e)}/>
+            <Input type="email" name="email" placeholder="email" onChange={(e) => handleChange(e)}/>
           </FormGroup>
         </Col>
       </Row>
@@ -75,7 +75,7 @@ class Auth extends Component{
         <Col md={6}>
           <FormGroup>
               <Label for="examplePassword" sm={2}>Password</Label>
-              <Input type="password" name="password" id="examplePassword" placeholder="password" onChange={(e) => handleChange(e)}/>
+              <Input type="password" name="password"  placeholder="password" onChange={(e) => handleChange(e)}/>
           </FormGroup>
         </Col>
         </Row>

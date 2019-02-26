@@ -5,6 +5,8 @@ import { Row } from 'reactstrap'
 
 import { favArticle, showArticle } from '../../store'
 
+import '../../stylesheets/showArticle.css'
+
 class ShowArticle extends Component {
 
   componentDidMount(){
@@ -27,17 +29,19 @@ class ShowArticle extends Component {
         {showArticle ?
         <Fragment>
           <Row>
-            <h1>{showArticle.title}</h1>
-            <a href={showArticle.url}>
-              <img  src={showArticle.urlToImage} alt="article"/>
-            </a>
+            <div className="article-header">
+              <h1>{showArticle.title}</h1>
+              <h4>BY: {showArticle.author || "Suzie McGee"}</h4>
+              <a href={showArticle.url}>
+                <img className="article" src={showArticle.urlToImage} alt="article"/>
+              </a>
+            </div>
           </Row>
           <button onClick={() => favArticle(currentUserId,showArticle._id)}>
             Save Article
           </button>
           <article>
-            <h1>{showArticle.author}</h1>
-            <h1>{showArticle.description}</h1>
+            <h3 className="desc">{showArticle.description}</h3>
             <p>{showArticle.content}</p>
           </article>
         </Fragment>
