@@ -43,7 +43,7 @@ const NewsCarousel = ({sources}) => {
 const renderNews = (sources) => {
   return(
     sources.map(source => {
-      return <CarouselCard source={source}/>
+      return <CarouselCard key={source.id} source={source}/>
     })
   )
 }

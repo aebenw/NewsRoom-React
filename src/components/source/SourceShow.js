@@ -17,7 +17,7 @@ class ShowSource extends Component{
         {showSource.articles ?
         <Fragment>
           <h1>{showSource.name}</h1>
-          <h1>{showSource.description}</h1>
+          <h2>{showSource.description}</h2>
           { showSource.articles.length ?
             <NewsFeed articles={showSource.articles} />
             : null

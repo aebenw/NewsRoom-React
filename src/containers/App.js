@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { NavBar } from '../components'
+import { LoggedInNav, LoggedOutNav } from '../components'
 import { Container } from 'reactstrap'
 import { token } from '../constants'
 import {retrieveWithToken} from '../store'
@@ -28,7 +28,10 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <NavBar />
+        {this.props.currentUser.email ?
+        <LoggedInNav />
+        : <LoggedOutNav/>
+        }
         <Container>
           <Routes />
         </Container>

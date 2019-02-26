@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
 import { NewsFeed } from '../../containers'
 
-import { getSavedArticles, showArticle } from '../../store'
+import { getSavedArticles } from '../../store'
 
 
 class SavedArticles extends Component {
