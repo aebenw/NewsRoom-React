@@ -1,3 +1,14 @@
+.row.search {
+  margin-top: 1em;
+  justify-content: space-between;
+}
+
+.search-card {
+  height: 150px;
+  width: 150px;
+  margin-bottom: .5em;
+  
+}
 .card {
   margin-top: .5rem;
 }
@@ -5,4 +16,9 @@
 .newsfeed {
   background: aliceblue;
   justify-content: center;
+}
+
+img.caro {
+  height: 100%;
+  width: 100%
 }

@@ -11,13 +11,23 @@ import {
 import { showSource, showArticle } from '../../store'
 import '../../stylesheets/newsfeed.css'
 
+const SearchCar = ({source: {_id, img}, showSource}) => {
+
+  return(
+    <div className="search-card" onClick={() => showSource(_id)}>
+      <Link to= {{ pathname: `/source/${_id}`}}>
+        <img className="caro" src={img} alt=""  />
+      </Link>
+    </div>
+  )
+}
 
 const CaroCard = ({source: {_id, img}, showSource}) => {
 
   return(
     <div onClick={() => showSource(_id)}>
       <Link to= {{ pathname: `/source/${_id}`}}>
-        <img src={img} alt=""  />
+        <img className="caro" src={img} alt=""  />
       </Link>
     </div>
   )
@@ -32,11 +42,6 @@ export const NewsCard = ({article:{ _id, author, title, category, urlToImage, de
     else {
         hostname = url.split('/')[0];
     }
-
-    //find & remove port number
-    hostname = hostname.split(':')[0];
-    //find & remove "?"
-    hostname = hostname.split('?')[0];
   }
   return(
     <Card>
@@ -74,4 +79,5 @@ const mapDispatchToFeed = (dispatch) => {
 
 
 export const CarouselCard = connect (null, mapDispatchToCarousel)(CaroCard)
+export const SearchCard = connect (null, mapDispatchToCarousel)(SearchCar)
 export const NewsFeedCard = connect(null, mapDispatchToFeed)(NewsCard)
